@@ -1,0 +1,72 @@
+{
+  "logo": "https://image.flaticon.com/icons/svg/247/247805.svg",
+  "title": "Qual é o seu nível de conhecimento sobre pré-flop?",
+  "description": "Desafio lançado! Responda qual seria sua ação e descubra se você está tomando as atitudes mais lucrativas nas mesas. Quantos pontos você consegue fazer?",
+  "start": "Começar o desafio!",
+  "next": "Bora pra próxima",
+  "remake": "Refazer o teste",
+  "feedback": "Minhas respostas",
+  "questions": [
+    {
+      "title": "Sit and Go de 45 jogadores e inscrição de $1. Você está no início do torneio e sem muitas informações técnicas dos oponentes. Qual a melhor ação?",
+      "image": "https://pokerlab.com.br/app/uploads/2018/02/quiz_sng_mesa_1.jpg",
+      "alternatives": [
+        "Desistir",
+        "Pagar 80",
+        "Aumentar para 160",
+        "Aumentar para 240",
+        "All-in"
+      ],
+      "answer": 4
+    },
+    {
+      "title": "Restam 17 jogadores num Sit and Go turbo de 180 jogadores e inscrição de $0,50 (todos já estão na faixa de premiação). Um jogador recreativo paga o big blind. Qual a melhor ação?",
+      "image": "https://pokerlab.com.br/app/uploads/2018/02/quiz_sng_mesa_2.jpg",
+      "alternatives": [
+        "Desistir",
+        "Pagar 800",
+        "Aumentar para 5000",
+        "All-in"
+      ],
+      "answer": 3
+    },
+    {
+      "title": "Restam 18 jogadores num Sit and Go turbo de 45 jogadores e inscrição de $3,50 (somente os 7 primeiros são premiados). Um excelente jogador aumenta a aposta das posições iniciais. Qual a melhor ação?",
+      "image": "https://pokerlab.com.br/app/uploads/2018/02/quiz_sng_mesa_3.jpg",
+      "alternatives": [
+        "Desistir",
+        "Pagar 600",
+        "Aumentar para 1500",
+        "All-in"
+      ],
+      "answer": 0
+    },
+    {
+      "title": "Mesa semifinal de um Sit and Go turbo de 180 jogadores e inscrição de $2,50 (todos já estão dentro da faixa de premiação). Um excelente jogador deu all-in das posições finais. Qual a melhor ação?",
+      "image": "https://pokerlab.com.br/app/uploads/2018/02/quiz_sng_mesa_4.jpg",
+      "alternatives": [
+        "Desistir",
+        "Pagar"
+      ],
+      "answer": 1
+    }
+  ],
+  "results": [
+    {
+      "title": "Nível 1",
+      "text": "Bora melhorar seu nível de conhecimento no pré-flop?"
+    },
+    {
+      "title": "Nível 2",
+      "text": "Bora melhorar seu nível de conhecimento no pré-flop?"
+    },
+    {
+      "title": "Nível 3",
+      "text": "Boa! Teu nível de conhecimento no pré-flop está afiado!"
+    },
+    {
+      "title": "Nível 4",
+      "text": "Boa! Teu nível de conhecimento no pré-flop está afiado!"
+    }
+  ]
+}
