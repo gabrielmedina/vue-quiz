@@ -40,13 +40,13 @@
     width: 100%;
     border-radius: 100px;
     padding: 4px;
-    background: rgba(#111, .05);
+    background: rgba(#186A3B, .1);
   }
 
   .progress__bar {
     height: 15px;
     border-radius: 100px;
-    background: rgba(#111, .1);
+    background: rgba(#186A3B, .2);
 
     transition: .5s ease;
   }

@@ -149,10 +149,10 @@
     }
 
     .alternatives__btn {
-      color: rgba(#111, .8);
+      color: darken(#186A3B, 5%);
       font-size: 1.1em;
       padding: 12px 16px;
-      background: rgba(#111, .07);
+      background: rgba(#186A3B, .15);
 
       &:hover {
         transform: scale(1.05);
@@ -160,7 +160,7 @@
 
       &:before {
         top: 7px;
-        border: solid 2px rgba(#111, .7);
+        border: solid 2px darken(#186A3B, 5%);
       }
     }
   }

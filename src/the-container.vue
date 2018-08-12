@@ -1,7 +1,9 @@
 <template>
   <div class="app">
+    <the-loading :loading="loading" :error="error"></the-loading>
+
     <div class="container">
-      <transition name="page">
+      <transition name="fade">
         <div v-show="!start" class="page">
           <the-intro
             :logo="quiz.logo"
@@ -13,10 +15,10 @@
         </div>
       </transition>
 
-      <transition name="page">
+      <transition name="fade">
         <ol v-show="start" class="questions">
           <li v-for="(question, i) in quiz.questions" :key="i" class="questions__item">
-            <transition name="page">
+            <transition name="fade">
               <div class="page" v-show="isCurrent(i)">
                 <the-question
                   :number="i"
@@ -31,7 +33,7 @@
         </ol>
       </transition>
 
-      <transition name="page">
+      <transition name="fade">
         <div v-if="finish" class="page">
           <the-result
             :total="total"
@@ -44,11 +46,13 @@
         </div>
       </transition>
 
-      <the-progress
-        v-if="start && !finish"
-        :current="current"
-        :total="total">
-      </the-progress>
+      <transition name="fade">
+        <the-progress
+          v-if="start && !finish"
+          :current="current"
+          :total="total">
+        </the-progress>
+      </transition>
     </div>
   </div>
 </template>
@@ -57,6 +61,7 @@
 import axios from 'axios'
 
 import TheIntro from './the-intro.vue'
+import TheLoading from './components/loading/'
 import TheQuestion from './components/question/'
 import TheProgress from './components/progress/'
 import TheResult from './components/result/'
@@ -66,6 +71,7 @@ export default {
 
   components: {
     TheIntro,
+    TheLoading,
     TheQuestion,
     TheProgress,
     TheResult
@@ -79,6 +85,8 @@ export default {
       total: 0,
       points: 0,
       quiz: {},
+      loading: true,
+      error: false,
     }
   },
 
@@ -121,9 +129,10 @@ export default {
       .then(res => {
         this.quiz = res.data
         this.total = this.quiz.questions.length
+        this.loading = false
       })
       .catch(err => {
-        alert(err)
+        this.error = err
       })
   }
 }
@@ -164,16 +173,6 @@ export default {
     min-height: 100vh;
   }
 
-  .page-enter-active,
-  .page-leave-active {
-    transition: .4s ease;
-  }
-
-  .page-enter,
-  .page-leave-active {
-    opacity: 0;
-  }
-
   .container {
     margin: 0 auto;
     max-width: 700px;
@@ -207,6 +206,21 @@ export default {
       color: #1E8449;
       border: solid 2px #1E8449;
     }
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: .5s ease;
+  }
+
+  .fade-enter,
+  .fade-leave {
+    opacity: 0;
+  }
+
+  .fade-enter-to,
+  .fade-leave-to {
+    opacity: 1;
   }
 
   @media screen and (min-width: 768px) {
