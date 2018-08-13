@@ -22,7 +22,6 @@
 
 <style lang="scss">
   .intro {
-    padding: 30px;
     text-align: center;
   }
 
@@ -49,7 +48,7 @@
 
   @media screen and (min-width: 768px) {
     .intro {
-      padding: 30px;
+
     }
 
     .intro__logo {

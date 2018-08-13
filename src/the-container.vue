@@ -1,140 +1,12 @@
 <template>
   <div class="app">
-    <the-loading :loading="loading" :error="error"></the-loading>
-
-    <div class="container">
-      <transition name="fade">
-        <div v-show="!start" class="page">
-          <the-intro
-            :logo="quiz.logo"
-            :title="quiz.title"
-            :description="quiz.description"
-            :start="quiz.start"
-            @start="start = true">
-          </the-intro>
-        </div>
-      </transition>
-
-      <transition name="fade">
-        <ol v-show="start" class="questions">
-          <li v-for="(question, i) in quiz.questions" :key="i" class="questions__item">
-            <transition name="fade">
-              <div class="page" v-show="isCurrent(i)">
-                <the-question
-                  :number="i"
-                  :question="question"
-                  @right="rightResp()"
-                  @wrong="wrongResp()"
-                  @next="nextQuestion(i)">
-                </the-question>
-              </div>
-            </transition>
-          </li>
-        </ol>
-      </transition>
-
-      <transition name="fade">
-        <div v-if="finish" class="page">
-          <the-result
-            :total="total"
-            :points="points"
-            :results="quiz.results"
-            :feedback="quiz.feedback"
-            :remake="quiz.remake"
-            @remake="remake()">
-          </the-result>
-        </div>
-      </transition>
-
-      <transition name="fade">
-        <the-progress
-          v-if="start && !finish"
-          :current="current"
-          :total="total">
-        </the-progress>
-      </transition>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-
-import TheIntro from './the-intro.vue'
-import TheLoading from './components/loading/'
-import TheQuestion from './components/question/'
-import TheProgress from './components/progress/'
-import TheResult from './components/result/'
-
 export default {
-  name: 'app',
-
-  components: {
-    TheIntro,
-    TheLoading,
-    TheQuestion,
-    TheProgress,
-    TheResult
-  },
-
-  data() {
-    return {
-      start: false,
-      finish: false,
-      current: 0,
-      total: 0,
-      points: 0,
-      quiz: {},
-      loading: true,
-      error: false,
-    }
-  },
-
-  methods: {
-    remake () {
-      this.finish = false
-      this.start = true,
-      this.current = 0,
-      this.points = 0
-    },
-
-    nextQuestion (i) {
-      if (!this.finish) {
-        this.current = i + 1
-        this.isFinish()
-      }
-    },
-
-    rightResp () {
-      this.points += 1;
-    },
-
-    wrongResp () {
-
-    },
-
-    isCurrent (i) {
-      return i == this.current
-    },
-
-    isFinish () {
-      if (this.current == this.total) {
-        this.finish = true
-      }
-    }
-  },
-
-  created() {
-    axios.get('https://api.myjson.com/bins/uml04')
-      .then(res => {
-        this.quiz = res.data
-        this.total = this.quiz.questions.length
-        this.loading = false
-      })
-      .catch(err => {
-        this.error = err
-      })
-  }
+  name: 'TheContainer'
 }
 </script>
 
@@ -175,8 +47,10 @@ export default {
 
   .container {
     margin: 0 auto;
+    box-sizing: border-box;
     max-width: 700px;
     width: 100%;
+    padding: 0 25px;
   }
 
   .btn {

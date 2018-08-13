@@ -1,4 +1,6 @@
-# vue-quiz
+# Vue Quiz
+
+> A simple study project about Vue.js :)
 
 ## Project setup
 ```
