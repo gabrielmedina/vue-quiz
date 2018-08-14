@@ -9,7 +9,7 @@ export default [
     component: index
   },
   {
-    path: ':slug',
+    path: '/:slug',
     name: 'quiz.show',
     component: show
   }
