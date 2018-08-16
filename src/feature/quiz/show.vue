@@ -3,7 +3,7 @@
     <the-loading :loading="loading" :error="error"></the-loading>
 
     <transition name="fade">
-      <div v-show="!start" class="page">
+      <div v-show="!start" class="page page--center">
         <the-intro
           :logo="quiz.logo"
           :title="quiz.title"
@@ -18,12 +18,12 @@
       <ol v-show="start" class="questions">
         <li v-for="(question, i) in quiz.questions" :key="i" class="questions__item">
           <transition name="fade">
-            <div class="page" v-show="isCurrent(i)">
+            <div class="page page--question" v-show="isCurrent(i)">
               <the-question
                 :number="i"
                 :question="question"
+                :answers="answers"
                 @right="rightResp()"
-                @wrong="wrongResp()"
                 @next="nextQuestion(i)">
               </the-question>
             </div>
@@ -37,8 +37,8 @@
         <the-result
           :total="total"
           :points="points"
+          :answers="answers"
           :results="quiz.results"
-          :feedback="quiz.feedback"
           :remake="quiz.remake"
           @remake="remake()">
         </the-result>
@@ -85,6 +85,7 @@
         current: 0,
         total: 0,
         points: 0,
+        answers: []
       }
     },
 
@@ -104,9 +105,10 @@
     methods: {
       remake () {
         this.finish = false
-        this.start = true,
-        this.current = 0,
+        this.start = true
+        this.current = 0
         this.points = 0
+        this.answers = []
       },
 
       nextQuestion (i) {
@@ -118,10 +120,6 @@
 
       rightResp () {
         this.points += 1;
-      },
-
-      wrongResp () {
-
       },
 
       isCurrent (i) {

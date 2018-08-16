@@ -41,8 +41,16 @@ export default {
   .page {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     min-height: 100vh;
+  }
+
+  .page--center {
+    justify-content: center;
+  }
+
+  .page--question {
+    padding: 30px 0;
   }
 
   .container {

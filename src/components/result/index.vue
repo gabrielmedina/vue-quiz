@@ -1,30 +1,47 @@
 <template>
   <div class="result">
-    <h1 class="result__title">{{ result.title }}</h1>
-    <p class="result__text">{{ result.text }}</p>
+    <header class="result__header">
+      <h1 class="result__title">{{ result.title }}</h1>
+      <p class="result__text">{{ result.text }}</p>
 
-    <div class="result__options">
-      <button class="btn" @click="$emit('feedback')">{{ feedback }}</button>
-      <button class="btn btn--secondary" @click="$emit('remake')">{{ remake }}</button>
-    </div>
+      <div class="result__options">
+        <button class="btn btn--secondary" @click="$emit('remake')">{{ remake }}</button>
+      </div>
+    </header>
+
+    <ol class="questions">
+      <li v-for="(question, i) in answers" :key="i" class="questions__item">
+        <the-question
+          :number="i"
+          :question="question"
+          :onlyview="true">
+        </the-question>
+      </li>
+    </ol>
   </div>
 </template>
 
 <script>
+  import TheQuestion from '../../components/question/'
+
   export default {
     name: 'TheResult',
+
+    components: {
+      TheQuestion
+    },
 
     props: [
       'total',
       'points',
+      'answers',
       'results',
-      'feedback',
       'remake'
     ],
 
     computed: {
       result () {
-        return this.results[(this.points - 1)]
+        return this.results[this.points == 0 ? this.points : this.points - 1]
       }
     }
   }
@@ -33,7 +50,11 @@
 <style lang="scss" scoped>
   .result {
     text-align: center;
-    padding: 20px;
+    padding: 100px 0;
+  }
+
+  .result__header {
+    margin-bottom: 20px;
   }
 
   .result__title {
