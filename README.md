@@ -1,6 +1,6 @@
 # Vue Quiz
 
-> A simple study project about Vue.js :)
+> SPA made with Vue.js for Quizzes
 
 ## Project setup
 ```
